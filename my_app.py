@@ -17,8 +17,8 @@ age=st.sidebar.selectbox("What is the age of your car:",(0,1,2,3))
 hp=st.sidebar.slider("What is the hp_kw of your car?", 40, 300, step=5)
 km=st.sidebar.slider("What is the km of your car", 0,350000, step=1000)
 gearing_type=st.sidebar.radio('Select gear type',('Automatic','Manual','Semi-automatic'))
-car_make=st.sidebar.selectbox("Select make of your car", ('Audi', 'Audi', 'Opel', 'Renault',))
-car_model=st.sidebar.selectbox("Select model of your car", ('A1', 'A3', 'Astra', 'Corsa', 'Insignia', 'Clio', 'Duster', 'Espace'))
+car_model=st.sidebar.selectbox("Select model of your car", ('Audi A1', 'Audi A3', 'Opel Astra', 'Opel Corsa', 'Opel Insignia', 'Renault Clio', 'Renault Duster', 'Renault Espace'))
+
 
 richard_model=pickle.load(open("rf_model_new","rb"))
 richard_transformer = pickle.load(open('transformer', 'rb'))
@@ -29,8 +29,7 @@ my_dict = {
     "hp_kW": hp,
     "km": km,
     'Gearing_Type':gearing_type,
-    "make": car_make
-    "model": car_model
+    "make_model": car_model
     
 }
 
