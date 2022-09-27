@@ -5,11 +5,10 @@ from sklearn.compose import make_column_transformer
 from sklearn.preprocessing import OrdinalEncoder
 
 
-
 st.sidebar.title('Car Price Prediction')
 html_temp = """
 <div style="background-color:purple;padding:10px">
-<h2 style="color:white;text-align:center;">Do you want to learn the price of your car?  So here it is. Just enter the information needed. </h2>
+<h2 style="color:white;text-align:center;">Car Price PRediction Streamlit ML Cloud App </h2>
 </div>"""
 st.markdown(html_temp,unsafe_allow_html=True)
 
@@ -18,8 +17,7 @@ age=st.sidebar.selectbox("What is the age of your car:",(0,1,2,3))
 hp=st.sidebar.slider("What is the hp_kw of your car?", 40, 300, step=5)
 km=st.sidebar.slider("What is the km of your car", 0,350000, step=1000)
 gearing_type=st.sidebar.radio('Select gear type',('Automatic','Manual','Semi-automatic'))
-car_make=st.sidebar.selectbox("Select make of your car", ('Audi', 'Opel', 'Renault'))
-car_model=st.sidebar.selectbox("Select model of your car", ('A1', 'A3', 'Astra', 'Corsa', 'Insignia', 'Clio', 'Duster', 'Espace'))
+car_model=st.sidebar.selectbox("Select model of your car", ('Audi A1', 'Audi A3', 'Opel Astra', 'Opel Corsa', 'Opel Insignia', 'Renault Clio', 'Renault Duster', 'Renault Espace'))
 
 
 richard_model=pickle.load(open("rf_model_new","rb"))
@@ -30,16 +28,15 @@ my_dict = {
     "age": age,
     "hp_kW": hp,
     "km": km,
-    'gearing_type':gearing_type,
-    "make": car_make,
-    "model": car_model
+    'Gearing_Type':gearing_type,
+    "make_model": car_model
     
 }
 
 df = pd.DataFrame.from_dict([my_dict])
 
 
-st.header("The configuration of your car is below")
+st.header("Do you want to learn the price of your car? So here it is. Just enter the information needed. The selected configuration of your car is below")
 st.table(df)
 
 df2 = richard_transformer.transform(df)
